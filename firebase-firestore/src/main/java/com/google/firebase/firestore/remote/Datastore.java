@@ -43,6 +43,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Datastore represents a proxy for the remote server, hiding details of the RPC layer. It:
@@ -109,6 +110,9 @@ public class Datastore {
         channelBuilder.usePlaintext();
       }
     }
+
+    channelBuilder.keepAliveTime(30, TimeUnit.SECONDS);
+    channelBuilder.keepAliveTimeout(20, TimeUnit.SECONDS);
 
     // This ensures all callbacks are issued on the worker queue. If this call is removed,
     // all calls need to be audited to make sure they are executed on the right thread.
