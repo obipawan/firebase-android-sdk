@@ -99,6 +99,9 @@ import javax.annotation.concurrent.GuardedBy;
  */
 @PublicApi
 public class FirebaseApp {
+  public static String hello() {
+    return "hello";
+  }
 
   private static final String LOG_TAG = "FirebaseApp";
 
